@@ -91,6 +91,8 @@ The radius is computed following these steps:
 3. Apply curvature formula from the scaled polynomial for left and right curves
 4. Compute average of both side values
 
+The distance from the center is calculated by knowing that the center of the image corresponds to the center of the vehicle. It is possible to infere the deviation distance by taking the average of the left bottom and right bottom most points of the lines and substracting from the image center.
+
 #### In[1.8]: Draw lines and contained area over the undistorted image
 Here is an example of my result on a test image:
 ![alt text][image6]
