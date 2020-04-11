@@ -21,15 +21,15 @@ The goals / steps of this project are the following:
 [image2]: ./output/Figure_1.png "Road Transformed"
 [image3]: ./output/Figure_2.png "Warp Example"
 [image4]: ./output/Figure_3.png "Binary Example"
-[image5]: ./output/Figure_6.png "Fit Visual"
-[image6]: ./output/Figure_0.png "Output"
+[image5]: ./output/Figure_4.png "Fit Visual"
+[image6]: ./output/Figure_6.png "Output"
 [video1]: ./project_video.mp4 "Video"
 
 ---
 
 ### Camera Calibration
 
-### The code is modulized in blocks so it can be executed step by step and understood clearly. There are 2 main blocks, one for the image pipeline designed by 1. and the other one, 2. for the video pipeline. All the code is in P1.py file.
+### The code is modulized in blocks so it can be executed step by step and understood clearly. There are 2 main blocks, one for the image pipeline designed by 1. and the other one, 2. for the video pipeline. All the code is in P1.py file and each module can be consulted directly as the documentation follows:
 
 #### In[1.1]: Compute the camera calibration using chessboard images
 
@@ -41,7 +41,7 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 ### Pipeline (single images)
 
-#### In[1.2]: Apply distortion correction to raw images DONE
+#### In[1.2]: Apply distortion correction to raw images
 
 Once `cv2.calibrateCamera()` is executed in the previous module, `mtx` and `dist` parameters are obtained, which will be fed to `cv2.undistort()` function. The output image will be free of the distortions produced by the camera lens.
 ![alt text][image2]
@@ -71,16 +71,25 @@ A combination of color and gradient (1-D) thresholds to generate a binary image 
 
 #### In[1.5]: Detect lane pixels and fit to find the lane boundary
 
-I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+The implementation of this module is based in the Sliding Window Search algorithm which consist in the following steps:
+
+a. The left and right base points are computed from the peaks of the histogram of the vertical non-zero pixels
+b. Then all non-zero pixels are located
+c. Iterations begin over the windows from a.
+d. Non-zero pixels contained in the defined window are gathered
+e. The indices of such pixels are retrieved in a list and the center of the next window is based using such points
+f. The left points are separated from the right ones
+g. A 2nd degree polynomial is fit to such points
 
 ![alt text][image5]
 
 #### In[1.7]: Determine the curvature of the lane and vehicle position with respect to center
 
-
-
-5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
-
+The radius is computed following these steps:
+a. Use scale values to convert from pixel to meter domain
+b. Plot scaled polynomial from bottom to top of the image as horizontal axis
+c. Apply curvature formula from the scaled polynomial for left and right curves
+d. Compute average of both side values
 
 #### In[1.8]: Draw lines and contained area over the undistorted image
 Here is an example of my result on a test image:
