@@ -220,7 +220,7 @@ def visualizeCurve(img, out_img, left_fit, right_fit, left_lane_inds, right_lane
 left_fit, right_fit, left_lane_inds, right_lane_inds, out_img = findCurve(binary_warped)
 visualizeCurve(binary_warped, out_img, left_fit, right_fit, left_lane_inds, right_lane_inds)
 
-# In[1.7]: Determine the curvature of the lane and vehicle position with respect to center DONE
+# In[1.7]: Determine the curvature of the lane and vehicle position with respect to center
 
 def measureCurvature(binary_warped, left_lane_inds, right_lane_inds):
     # Define conversions in x and y from pixels space to meters
@@ -313,7 +313,7 @@ def drawData(img, curv_rad, vehicle_pos):
 final_img = drawData(img_content, (left_curverad + right_curverad) / 2, vehicle_pos)
 plt.imshow(final_img)
 
-# In[2.1]:
+# In[2.1]: Pipeline
 def pipeline(img):  
     original_img = np.copy(img)
     
@@ -332,7 +332,7 @@ def pipeline(img):
     
     return img_content
     
-# In[2.2]:
+# In[2.2]: I/O Video through the pipeline
 from moviepy.editor import VideoFileClip
 
 video_output1 = 'C:/Users/chris/Google Drive/Documents/Continuous Learning/Self Driving Cars Nanodegree/Finding Lane Lines Advanced Project/project_video_output.mp4'
