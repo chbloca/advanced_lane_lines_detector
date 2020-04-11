@@ -23,7 +23,7 @@ The goals / steps of this project are the following:
 [image4]: ./output/Figure_3.png "Binary Example"
 [image5]: ./output/Figure_4.png "Fit Visual"
 [image6]: ./output/Figure_6.png "Output"
-[video1]: ./project_video.mp4 "Video"
+[video1]: ./output/project_video_output.mp4 "Video"
 
 ---
 
