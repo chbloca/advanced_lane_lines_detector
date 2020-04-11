@@ -73,23 +73,23 @@ A combination of color and gradient (1-D) thresholds to generate a binary image 
 
 The implementation of this module is based in the Sliding Window Search algorithm which consist in the following steps:
 
-a. The left and right base points are computed from the peaks of the histogram of the vertical non-zero pixels
-b. Then all non-zero pixels are located
-c. Iterations begin over the windows from a.
-d. Non-zero pixels contained in the defined window are gathered
-e. The indices of such pixels are retrieved in a list and the center of the next window is based using such points
-f. The left points are separated from the right ones
-g. A 2nd degree polynomial is fit to such points
+1. The left and right base points are computed from the peaks of the histogram of the vertical non-zero pixels
+2. Then all non-zero pixels are located
+3. Iterations begin over the windows from a.
+4. Non-zero pixels contained in the defined window are gathered
+5. The indices of such pixels are retrieved in a list and the center of the next window is based using such points
+6. The left points are separated from the right ones
+7. A 2nd degree polynomial is fit to such points
 
 ![alt text][image5]
 
 #### In[1.7]: Determine the curvature of the lane and vehicle position with respect to center
 
 The radius is computed following these steps:
-a. Use scale values to convert from pixel to meter domain
-b. Plot scaled polynomial from bottom to top of the image as horizontal axis
-c. Apply curvature formula from the scaled polynomial for left and right curves
-d. Compute average of both side values
+1. Use scale values to convert from pixel to meter domain
+2. Plot scaled polynomial from bottom to top of the image as horizontal axis
+3. Apply curvature formula from the scaled polynomial for left and right curves
+4. Compute average of both side values
 
 #### In[1.8]: Draw lines and contained area over the undistorted image
 Here is an example of my result on a test image:
